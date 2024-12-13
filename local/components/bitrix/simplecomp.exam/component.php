@@ -9,6 +9,19 @@ if (!Loader::includeModule("iblock")) {
 	return;
 }
 
+if ($USER->IsAuthorized()) {
+	$arButtons = CIBlock::GetPanelButtons($arParams["NEWS_IBLOCK_ID"]);
+
+	$this->AddIncludeAreaIcon(
+		array(
+			"ID" => "linkib",
+			'URL' => $arButtons["submenu"]["element_list"]["ACTION_URL"],
+			'TITLE' => GetMessage("SIMPLECOMP_EXAM2_IB_LINK"),
+			"IN_PARAMS_MENU" => true
+		),
+	);
+}
+
 if (
 	intval($arParams["NEWS_IBLOCK_ID"]) > 0
 	&& !empty($arParams["AUTHOR_TYPE"])
@@ -55,7 +68,7 @@ if (
 		$news = [];
 		while ($arElement = $rsElements->GetNext()) {
 			$news[$arElement["ID"]] = $arElement["ID"];
-			$arResult["USERS"][$arElement["PROPERTY_".$arParams["AUTHOR"]."_VALUE"]]["NEWS"][$arElement["ID"]] = [
+			$arResult["USERS"][$arElement["PROPERTY_" . $arParams["AUTHOR"] . "_VALUE"]]["NEWS"][$arElement["ID"]] = [
 				"NAME" => $arElement["NAME"],
 			];
 		}
