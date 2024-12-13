@@ -1,15 +1,15 @@
 <?
 $aMenuLinks = Array(
 	Array(
-		"Простой компонент", 
-		"/ex2/simplecomp/", 
+		"main", 
+		"/ex2/site2/", 
 		Array(), 
 		Array(), 
 		"" 
 	),
 	Array(
-		"Второй сайт", 
-		"/ex2/site2/", 
+		"about", 
+		"/ex2/site2/about.php", 
 		Array(), 
 		Array(), 
 		"" 
