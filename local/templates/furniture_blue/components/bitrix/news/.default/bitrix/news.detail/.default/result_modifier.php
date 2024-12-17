@@ -7,7 +7,7 @@ if(!empty($arParams["CANONICAL_ID"]) && intval($arParams["CANONICAL_ID"]) > 0)
         [],
         [
             "IBLOCK_ID" => $arParams["CANONICAL_ID"],
-            "NEW" => $arResult["ID"]
+            "PROPERTY_NEW" => $arResult["ID"]
         ],
         false,
         false,

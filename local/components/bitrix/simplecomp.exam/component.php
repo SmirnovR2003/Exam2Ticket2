@@ -47,7 +47,7 @@ if (
 			]
 		);
 		while ($arUser = $rsUsers->GetNext()) {
-			$arResult["USERS"][$arUser["ID"]] = ["ID" => $arUser["ID"], "LOGIN" => $arUser["LOGIN"], $arParams["AUTHOR_TYPE"] => $arUser[$arParams["AUTHOR_TYPE"]],];
+			$arResult["USERS"][$arUser["ID"]] = ["ID" => $arUser["ID"], "LOGIN" => $arUser["LOGIN"], $arParams["AUTHOR_TYPE"] => $arUser[$arParams["AUTHOR_TYPE"]],"NEWS"=>[]];
 		}
 
 		$rsElements = CIBlockElement::GetList(
