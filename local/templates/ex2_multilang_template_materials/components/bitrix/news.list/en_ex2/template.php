@@ -24,8 +24,8 @@ $this->setFrameMode(true);
 	<p class="news-item" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
 		
 		<span class="news-date-time"><?echo $arItem["DISPLAY_ACTIVE_FROM"]?></span>
-		<b><?echo $arItem["PROPERTIES"]["EN_NAME"]["VALUE"] ? $arItem["PROPERTIES"]["EN_NAME"]["VALUE"] : ""?></b><br />
-		<?echo $arItem["PROPERTIES"]["EN_PREVIEW_TEXT"]["VALUE"]["TEXT"] ? $arItem["PROPERTIES"]["EN_PREVIEW_TEXT"]["VALUE"]["TEXT"] : ""?>
+		<b><?= (!empty($arItem["PROPERTIES"]["EN_NAME"]["VALUE"]) ? $arItem["PROPERTIES"]["EN_NAME"]["VALUE"] : "")?></b><br />
+		<?= (!empty($arItem["PROPERTIES"]["EN_PREVIEW_TEXT"]["VALUE"]["TEXT"]) ? $arItem["PROPERTIES"]["EN_PREVIEW_TEXT"]["VALUE"]["TEXT"] : "")?>
 	</p>
 <?endforeach;?>
 </div>

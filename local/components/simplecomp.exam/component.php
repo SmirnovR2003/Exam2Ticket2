@@ -47,12 +47,27 @@ if (
 			]
 		);
 		while ($arUser = $rsUsers->GetNext()) {
-			$arResult["USERS"][$arUser["ID"]] = ["ID" => $arUser["ID"], "LOGIN" => $arUser["LOGIN"], $arParams["AUTHOR_TYPE"] => $arUser[$arParams["AUTHOR_TYPE"]],"NEWS"=>[]];
+			$arResult["USERS"][$arUser["ID"]] = [
+				"ID" => $arUser["ID"], 
+				"LOGIN" => $arUser["LOGIN"], 
+				$arParams["AUTHOR_TYPE"] => $arUser[$arParams["AUTHOR_TYPE"]],
+				"NEWS"=>[]
+			];
+		}
+
+		if(empty($arResult["USERS"]))
+		{
+			$arResult["NEWS_COUNT"] = 0;
+			$this->SetResultCacheKeys(["NEWS_COUNT"]);
+			$this->includeComponentTemplate();
+			$APPLICATION->SetTitle(GetMessage("SIMPLECOMP_EXAM2_NEWS_COUNT", ["#NEWS_COUNT#" => $arResult["NEWS_COUNT"]]));
+			return;
 		}
 
 		$rsElements = CIBlockElement::GetList(
 			[],
 			[
+				"IBLOCK_ID" => $arParams["NEWS_IBLOCK_ID"],
 				"PROPERTY_" . $arParams["AUTHOR"] => array_keys($arResult["USERS"]),
 				"ACTIVE" => "Y"
 			],
